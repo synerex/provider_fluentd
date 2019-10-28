@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"log"
 	"sync"
+	"unsafe"
 
 	"github.com/golang/protobuf/proto"
 	fluentd "github.com/synerex/proto_fluentd"
@@ -58,7 +59,9 @@ func supplyCallback(clt *sxutil.SXServiceClient, sp *pb.Supply) {
 	err := proto.Unmarshal(sp.Cdata.Entity, record)
 
 	if err == nil {
-		log.Println("Got record:", record.Tag, record.Time, record.Record)
+           log.Println("Got record:", record.Tag, record.Time)
+	   record_str := *(*string)(unsafe.Pointer(&(record.Record)))
+	   log.Println("Record:", record_str)
 	}
 
 }
