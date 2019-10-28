@@ -135,9 +135,9 @@ func convertWiFi(dt map[string]interface{}) {
 			term = terminals[vals[1]]
 		}
 
-		term.lastAMP = host
+		term.lastAMP = host[9:]
 		term.lastTS = f
-		term.AMPS = append(term.AMPS, host)
+		term.AMPS = append(term.AMPS, host[9:])
 		term.timestamps = append(term.timestamps, vals[0])
 		term.powers = append(term.powers, vals[2])
 		term.oids = append(term.oids, vals[3])
