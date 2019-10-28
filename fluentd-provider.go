@@ -95,10 +95,10 @@ type Terminal struct {
 	AMPS       []string // slice of seen AMPs
 	timestamps []string // slice of seen AMPs
 	powers     []string // slice of seen AMPs
-	oids       []string // slice of seen AMPs
-	counts     []string // slice of seen AMPs
-	termstr    string   // infoString
-	count      int32    // howmany count
+	//	oids       []string // slice of seen AMPs
+	counts  []string // slice of seen AMPs
+	termstr string   // infoString
+	count   int32    // howmany count
 }
 
 type AMPM struct { // for signal info
@@ -127,10 +127,10 @@ func convertWiFi(dt map[string]interface{}) {
 				AMPS:       make([]string, 0),
 				timestamps: make([]string, 0),
 				powers:     make([]string, 0),
-				oids:       make([]string, 0),
-				counts:     make([]string, 0),
-				termstr:    s,
-				count:      0,
+				//				oids:       make([]string, 0),
+				counts:  make([]string, 0),
+				termstr: s,
+				count:   0,
 			}
 			term = terminals[vals[1]]
 		}
@@ -140,7 +140,7 @@ func convertWiFi(dt map[string]interface{}) {
 		term.AMPS = append(term.AMPS, host[9:])
 		term.timestamps = append(term.timestamps, vals[0])
 		term.powers = append(term.powers, vals[2])
-		term.oids = append(term.oids, vals[3])
+		//		term.oids = append(term.oids, vals[3])
 		term.counts = append(term.counts, vals[4])
 		term.count = term.count + 1
 		totalTerminals++
